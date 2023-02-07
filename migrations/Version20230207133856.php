@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20230202103946 extends AbstractMigration
+final class Version20230207133856 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,12 +20,16 @@ final class Version20230202103946 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE message (id INT AUTO_INCREMENT NOT NULL, nom VARCHAR(255) NOT NULL, prenom VARCHAR(255) NOT NULL, mail VARCHAR(255) NOT NULL, message LONGTEXT NOT NULL, date_message DATE NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('ALTER TABLE navire ADD idport INT DEFAULT NULL');
+        $this->addSql('ALTER TABLE navire ADD CONSTRAINT FK_EED1038905EAC6C FOREIGN KEY (idport) REFERENCES port (id)');
+        $this->addSql('CREATE INDEX IDX_EED1038905EAC6C ON navire (idport)');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('DROP TABLE message');
+        $this->addSql('ALTER TABLE navire DROP FOREIGN KEY FK_EED1038905EAC6C');
+        $this->addSql('DROP INDEX IDX_EED1038905EAC6C ON navire');
+        $this->addSql('ALTER TABLE navire DROP idport');
     }
 }
