@@ -1,0 +1,51 @@
+  <style>
+    .footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    bottom:0;
+    position: absolute;
+    width: 100%;
+}
+.left, .right{
+    display: flex;
+    flex-direction: column;
+}
+.left{
+    text-align: left;
+}
+.right{
+    text-align: right;
+}
+img{
+    max-height: 100px;
+    max-width: 100px;
+}
+.footer_img{
+     border-radius: 5px;
+}
+
+a{
+    color: black;
+}
+
+</style>
+
+<footer>
+     <div class="footer bg-primary">
+         <div class="left">
+             <a href={{ path('message') }}>Contact</a>
+             <span>www.bertinalexis.fr</span>
+         </div>
+         <div class="center">
+             <img class="footer_img" src="/assets/img/navire.jpg">
+         </div>
+
+         <div class="right">
+             <span>Mentions légales</span>
+             <span>Plan du site</span>
+         </div>
+     </div>
+
+</footer>
